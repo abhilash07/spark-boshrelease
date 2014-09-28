@@ -1,0 +1,101 @@
+<% num_zookeepers = 3 %>
+<% num_masters = 2 %>
+<% num_slaves = 5 %>
+<% vpc_subnet_id = "CHANGE_ME" %>
+<% deployment_name = "spark-ha-aws-vpc" %>
+<% zookeeper_deployment_name = "zookeeper-aws-vpc" %>
+<% os = "ubuntu-trusty-go_agent" %>
+<% tld = "microbosh" %>
+<% release_name = "spark-boshrelease" %>
+<% director_uuid = "CHANGE_ME" %>
+---
+
+compilation:
+  cloud_properties:
+    instance_type: m1.xlarge
+  network: default
+  reuse_compilation_vms: true
+  workers: 6
+name:  <%= deployment_name %>
+director_uuid: <%= director_uuid %>
+
+jobs:
+- name: spark-master
+  networks:
+  - name: default
+    default: [dns, gateway]
+    static_ips: null
+  resource_pool: master
+  template: spark-master
+  instances: <%= num_masters %>
+
+- name: spark-slave
+  networks:
+  - name: default
+    default: [dns, gateway]
+    static_ips: null
+  resource_pool: slave
+  template: spark-slave
+  instances: <%= num_slaves %>
+
+meta:
+  environment: <%= deployment_name %>
+  stemcell:
+    name: bosh-aws-xen-<%= os %>
+    version: latest
+
+networks:
+- name: default
+  subnets:
+  - range: 10.11.2.0/24
+    name: default_unused
+    reserved:
+    - 10.11.2.2 - 10.11.2.15
+    static:
+    - 10.11.2.100 - 10.11.2.125
+    gateway: 10.11.2.1
+    dns:
+    - 10.11.2.9
+    cloud_properties:
+      security_groups:
+      - bigdata
+      subnet: <%= vpc_subnet_id %>
+      type: dynamic
+
+releases:
+- name: <%= release_name %>
+  version: latest
+
+resource_pools:
+  - name: master
+    network: default
+    size: <%= num_masters %>
+    stemcell:
+      name: bosh-aws-xen-<%= os %>
+      version: latest
+    cloud_properties:
+      instance_type: m1.xlarge
+
+  - name: slave
+    network: default
+    size: <%= num_slaves %>
+    stemcell:
+      name: bosh-aws-xen-<%= os %>
+      version: latest
+    cloud_properties:
+      instance_type: m2.2xlarge
+
+properties:
+  zookeeper:
+    servers:
+      <% num_zookeepers.times do |i| %>
+      <%= "- #{i}.zookeeper.default.#{zookeeper_deployment_name}.#{tld}\n" %>
+      <% end %>
+  spark:
+    masters: "0.spark-master.default.<%= deployment_name %>.<%= tld %>:7077,1.spark-master.default.<%= deployment_name %>.<%= tld %>:7077"
+
+update:
+  canaries: 1
+  canary_watch_time: 1000-30000
+  max_in_flight: 50
+  update_watch_time: 1000-30000
