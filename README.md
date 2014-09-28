@@ -51,6 +51,8 @@ git push origin master --tags
 
 ## TODO
 
+a. JDK 6 for pySpark
+b. JDK 8 testing
 
 ## Disclaimer
 
