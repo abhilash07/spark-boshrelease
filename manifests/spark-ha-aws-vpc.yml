@@ -47,13 +47,13 @@ meta:
 networks:
 - name: default
   subnets:
-  - range: 10.11.2.0/24
+  - range: 10.11.3.0/24
     name: default_unused
     reserved:
-    - 10.11.2.2 - 10.11.2.15
+    - 10.11.3.2 - 10.11.3.15
     static:
-    - 10.11.2.100 - 10.11.2.125
-    gateway: 10.11.2.1
+    - 10.11.3.100 - 10.11.3.125
+    gateway: 10.11.3.1
     dns:
     - 10.11.2.9
     cloud_properties:
