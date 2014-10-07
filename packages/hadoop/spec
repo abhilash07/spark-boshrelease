@@ -1,0 +1,7 @@
+---
+name: hadoop
+dependencies:
+- java
+- snappy
+files:
+- hadoop/hadoop-2.5.1.tar.gz
