@@ -11,6 +11,6 @@ export HOME=/var/vcap
 
 PATH=/var/vcap/packages/java/bin:$PATH
 
-tar xfv hadoop/hadoop-2.5.1.tar.gz
+tar xfv hadoop/hadoop-2.4.1.tar.gz
 
-cp -a hadoop-2.5.1/* $BOSH_INSTALL_TARGET
+cp -a hadoop-2.4.1/* $BOSH_INSTALL_TARGET
