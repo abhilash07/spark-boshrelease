@@ -3,4 +3,4 @@ name: spark
 dependencies: 
   - java
 files:
-- spark/spark-1.1.1-SNAPSHOT-bin-2.4.1.tgz
+- spark/spark-1.1.0-bin-2.4.1.tgz
