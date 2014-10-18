@@ -15,6 +15,8 @@ export SPARK_LOCAL_IP=<%= spec.networks.default.ip %>
 export JAVA_HOME=/var/vcap/packages/java/jdk
 export PATH=$JAVA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
 export SPARK_JAVA_OPTS="-Xms300m -Xmx512m -XX:MaxPermSize=1g"
+export MASTER="spark://0.spark-master.default.spark-ha-aws-vpc.microbosh:7077,1.spark-master.default.spark-ha-aws-vpc.microbosh:7077"
+
 
 SPARK_WORK_DIR=$SPARK_HOME/work
 SPARK_PACKAGE_DATA=/var/vcap/data/packages/spark
