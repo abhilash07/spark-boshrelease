@@ -1,5 +1,5 @@
 ---
-name: spark-slave
+name: spark-client
 packages:
 - java
 - spark
