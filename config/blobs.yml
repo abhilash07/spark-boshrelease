@@ -1,1 +1,17 @@
---- {}
+---
+snappy/snappy-1.1.2.tar.gz:
+  object_id: c3664b4d-29a1-4ddb-a80f-9c2ab82cae71
+  sha: a5f37487e7f1db923b00392e9a2ef556242c3634
+  size: 1485435
+java/jdk-7u67-linux-x64.tar.gz:
+  object_id: e4730c24-90d6-48a6-bb5b-b1eef2a26ae3
+  sha: c1428d338ac60a1b61160f74a45abd74f83e8703
+  size: 142376665
+spark/spark-1.1.0-bin-hadoop2.4.tgz:
+  object_id: 87dccf59-3efe-4fc2-80f9-7e997bb0e2fd
+  sha: c7cf50454ac77014fa0f3a7f7a627f93a60fcac2
+  size: 191475104
+hadoop/hadoop-2.4.1.tar.gz:
+  object_id: f0a10c2b-36a1-44d5-8a6a-17b0ba786819
+  sha: bec3d911fd0b84cd4a7130fb212125c7ae51e878
+  size: 138656756
