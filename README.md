@@ -5,7 +5,7 @@ This is a Bosh release for building Big Data Infrastructures with Apache Spark. 
 
 ## Supported Version
 
-Apache Spark 1.1.1
+Apache Spark 1.3.1 with HDFS (Hadoop 2.6)
 
 ## Dependencies
 

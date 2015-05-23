@@ -4,4 +4,4 @@ dependencies:
 - java
 - snappy
 files:
-- hadoop/hadoop-2.4.1.tar.gz
+- hadoop/hadoop-2.6.0.tar.gz
