@@ -3,4 +3,4 @@ name: spark
 dependencies: 
   - java
 files:
-- spark/spark-1.3.1-bin-hadoop2.6.tgz
+- spark/spark-1.4.0-bin-hadoop2.6.tgz
