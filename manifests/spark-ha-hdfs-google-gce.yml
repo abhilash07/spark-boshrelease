@@ -5,6 +5,7 @@
 <% zookeeper_deployment_name = "zookeeper-google-gce" %>
 <% tld = "microbosh" %>
 <% release_name = "spark-boshrelease" %>
+<% zone = "CHANGE_ME" %>
 <% director_uuid = "CHANGE_ME" %>
 ---
 
@@ -151,6 +152,7 @@ resource_pools:
       name: bosh-google-kvm-ubuntu-trusty-go_agent
       version: latest
     cloud_properties:
+      zone: <%= zone %>
       machine_type: n1-standard-1
       root_disk_size_gb: 20
       root_disk_type: pd-standard
@@ -161,6 +163,7 @@ resource_pools:
       name: bosh-google-kvm-ubuntu-trusty-go_agent
       version: latest
     cloud_properties:
+      zone: <%= zone %>
       machine_type: n1-standard-1
       root_disk_size_gb: 20
       root_disk_type: pd-standard
@@ -171,6 +174,7 @@ resource_pools:
       name: bosh-google-kvm-ubuntu-trusty-go_agent
       version: latest
     cloud_properties:
+      zone: <%= zone %>
       machine_type: n1-standard-2
       root_disk_size_gb: 20
       root_disk_type: pd-standard
