@@ -12,7 +12,7 @@
 compilation:
   cloud_properties:
      machine_type: n1-highcpu-2
-  network: private
+  network: default
   reuse_compilation_vms: true
   workers: 6
 name:  <%= deployment_name %>
@@ -29,7 +29,7 @@ jobs:
     resource_pool: hdfs-master
 
     networks:
-      - name: private
+      - name: default
         type: dynamic
         cloud_properties:
           network_name: default
@@ -39,7 +39,7 @@ jobs:
     properties:
       hadoop:
         namenode:
-          host: "0.hdfs-master.private.<%= deployment_name %>.<%= tld %>"
+          host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
           port: 8020
 
   - name: hdfs-smaster
@@ -52,7 +52,7 @@ jobs:
     resource_pool: hdfs-master
 
     networks:
-      - name: private
+      - name: default
         type: dynamic
         cloud_properties:
           network_name: default
@@ -62,7 +62,7 @@ jobs:
     properties:
       hadoop:
         namenode:
-          host: "0.hdfs-master.private.<%= deployment_name %>.<%= tld %>"
+          host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
           port: 8020
 
 
@@ -76,7 +76,7 @@ jobs:
     resource_pool: master
 
     networks:
-      - name: private
+      - name: default
         type: dynamic
         cloud_properties:
           network_name: default
@@ -87,13 +87,13 @@ jobs:
       zookeeper:
         servers:
           <% num_zookeepers.times do |i| %>
-            <%= "- #{i}.zookeeper.private.#{zookeeper_deployment_name}.#{tld}\n" %>
+            <%= "- #{i}.zookeeper.default.#{zookeeper_deployment_name}.#{tld}\n" %>
           <% end %>
       spark:
-        masters: "0.spark-master.private.<%= deployment_name %>.<%= tld %>:7077,1.spark-master.private.<%= deployment_name %>.<%= tld %>:7077"
+        masters: "0.spark-master.default.<%= deployment_name %>.<%= tld %>:7077,1.spark-master.default.<%= deployment_name %>.<%= tld %>:7077"
       hadoop:
         namenode:
-          host: "0.hdfs-master.private.<%= deployment_name %>.<%= tld %>"
+          host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
           port: 8020
 
 
@@ -110,7 +110,7 @@ jobs:
     persistent_disk_pool: slave_disks
 
     networks:
-      - name: private
+      - name: default
         type: dynamic
         cloud_properties:
           network_name: default
@@ -119,10 +119,10 @@ jobs:
 
     properties:
       spark:
-        masters: "0.spark-master.private.<%= deployment_name %>.<%= tld %>:7077,1.spark-master.private.<%= deployment_name %>.<%= tld %>:7077"
+        masters: "0.spark-master.default.<%= deployment_name %>.<%= tld %>:7077,1.spark-master.default.<%= deployment_name %>.<%= tld %>:7077"
       hadoop:
         namenode:
-          host: "0.hdfs-master.private.<%= deployment_name %>.<%= tld %>"
+          host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
           port: 8020
 
 meta:
@@ -132,7 +132,7 @@ meta:
     version: latest
 
 networks:
-  - name: private
+  - name: default
     type: dynamic
     cloud_properties:
       network_name: default
@@ -147,7 +147,7 @@ releases:
 
 resource_pools:
   - name: master
-    network: private
+    network: default
     stemcell:
       name: bosh-google-kvm-ubuntu-trusty-go_agent
       version: latest
@@ -158,7 +158,7 @@ resource_pools:
       root_disk_type: pd-standard
 
   - name: hdfs-master
-    network: private
+    network: default
     stemcell:
       name: bosh-google-kvm-ubuntu-trusty-go_agent
       version: latest
@@ -169,7 +169,7 @@ resource_pools:
       root_disk_type: pd-standard
 
   - name: slave
-    network: private
+    network: default
     stemcell:
       name: bosh-google-kvm-ubuntu-trusty-go_agent
       version: latest
