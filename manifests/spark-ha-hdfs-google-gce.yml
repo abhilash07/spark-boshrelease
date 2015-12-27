@@ -30,10 +30,10 @@ jobs:
     networks:
       - name: private
         type: dynamic
-          cloud_properties:
-            network_name: default
-            tags:
-              - hdfs-master
+        cloud_properties:
+          network_name: default
+          tags:
+            - hdfs-master
 
     properties:
       hadoop:
@@ -53,10 +53,10 @@ jobs:
     networks:
       - name: private
         type: dynamic
-          cloud_properties:
-            network_name: default
-            tags:
-              - hdfs-master
+        cloud_properties:
+          network_name: default
+          tags:
+            - hdfs-master
 
     properties:
       hadoop:
@@ -77,10 +77,10 @@ jobs:
     networks:
       - name: private
         type: dynamic
-          cloud_properties:
-            network_name: default
-            tags:
-              - spark-master
+        cloud_properties:
+          network_name: default
+          tags:
+            - spark-master
 
     properties:
       zookeeper:
@@ -111,10 +111,10 @@ jobs:
     networks:
       - name: private
         type: dynamic
-          cloud_properties:
-            network_name: default
-            tags:
-              - spark-slave
+        cloud_properties:
+          network_name: default
+          tags:
+            - spark-slave
 
     properties:
       spark:
