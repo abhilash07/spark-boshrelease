@@ -14,7 +14,7 @@ compilation:
      machine_type: n1-highcpu-2
   network: private
   reuse_compilation_vms: true
-  slaves: 6
+  workers: 6
 name:  <%= deployment_name %>
 director_uuid: <%= director_uuid %>
 
