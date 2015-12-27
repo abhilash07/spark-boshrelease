@@ -102,6 +102,8 @@ jobs:
     templates:
       - name: spark-slave
         release: <%= release_name %>
+      - name: datanode
+        release: <%= release_name %>
 
     resource_pool: slave
     persistent_disk_pool: slave_disks
