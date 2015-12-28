@@ -27,3 +27,12 @@ export SPARK_MASTER_WEBUI_PORT=8080
 export JAVA_HOME=/var/vcap/packages/java/jdk
 export PATH=$JAVA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
 export SPARK_JAVA_OPTS="-Xms300m -Xmx512m -XX:MaxPermSize=1g"
+
+#NoSQL - Spark write destinations
+export MONGO_IP=<%= p("nosql.mongodb.host") %>
+export MONGO_PORT=<%= p("nosql.mongodb.port") %>
+export NEO_IP=<%= p("nosql.neo4j.host") %>
+export NEO_PORT=<%= p("nosql.neo4j.port") %>
+export NEO_USER=<%= p("nosql.neo4j.user") %>
+export NEO_PASSWORD=<%= p("nosql.neo4j.password") %>
+export NEO_DB=<%= p("nosql.neo4j.db") %>
