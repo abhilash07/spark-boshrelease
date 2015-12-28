@@ -32,3 +32,24 @@ properties:
   zookeeper.client_port:
     description: "Port at which the clients will connect to Apache Zookeeper"
     default: 2181
+  nosql.mongodb.host:
+    description: "MongoDB cluster IP"
+    default: 127.0.0.1
+  nosql.mongodb.port:
+    description: "MongoDB cluster port"
+    default: 27017
+  nosql.neo4j.host:
+    description: "Neo4J DB host IP"
+    default: 127.0.0.1
+  nosql.neo4j.port:
+    description: "Neo4J DB Port"
+    default: 7474
+  nosql.neo4j.user:
+    description: "Neo4J DB User"
+    default: neo4j
+  nosql.neo4j.password:
+    description: "Neo4J Password"
+    default: neo4j
+  nosql.neo4j.db:
+    description: "Neo4j DB"
+    default: data
