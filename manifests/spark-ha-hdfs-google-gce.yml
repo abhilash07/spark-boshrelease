@@ -39,6 +39,7 @@ jobs:
     properties:
       hadoop:
         namenode:
+          dfs_name_dir_root: /var/vcap/store/hadoop
           host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
           port: 8020
 
@@ -62,6 +63,7 @@ jobs:
     properties:
       hadoop:
         namenode:
+          dfs_name_dir_root: /var/vcap/store/hadoop
           host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
           port: 8020
 
