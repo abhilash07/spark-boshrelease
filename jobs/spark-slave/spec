@@ -11,6 +11,7 @@ templates:
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
   config/spark-env.sh.erb: config/spark-env.sh
+  config/spark-defaults.conf.erb config/spark-defaults.conf
 properties:
   spark.master.host:
     description: The Hostname or address of the Spark master
