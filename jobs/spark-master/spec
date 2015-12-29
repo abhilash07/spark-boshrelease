@@ -28,6 +28,10 @@ properties:
   spark.cluster.name:
     description: The name of the cluster as shown in the Spark admin ui
     default: bosh-spark-cluster
+  spark.driver.memory:
+    description: Driver memory
+  spark.executor.memory:
+    description: Executor memory
   zookeeper.servers:
     description: "List of all Apache Zookeeper server host IP/hostnames"
   zookeeper.client_port:
