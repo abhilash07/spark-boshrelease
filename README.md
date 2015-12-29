@@ -4,8 +4,8 @@ This is a Bosh release for building Big Data Infrastructures with Apache Spark. 
 
 
 ## Supported Version
-
-Apache Spark 1.4.0 with HDFS (Hadoop 2.6)
+Apache Spark 1.5.2 with HDFS (Hadoop 2.6) - spark-boshrelease-6.yml
+Apache Spark 1.4.1 with HDFS (Hadoop 2.6) <= spark-boshrelease-6.yml
 
 ## Dependencies
 
