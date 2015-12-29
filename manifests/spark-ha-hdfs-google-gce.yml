@@ -98,6 +98,10 @@ jobs:
           <% end %>
       spark:
         masters: "0.spark-master.default.<%= deployment_name %>.<%= tld %>:7077,1.spark-master.default.<%= deployment_name %>.<%= tld %>:7077"
+        driver:
+          memory: 2g
+        executor:
+          memory: 2g
       nosql:
         mongodb:
           host: 127.0.0.1
@@ -132,6 +136,10 @@ jobs:
     properties:
       spark:
         masters: "0.spark-master.default.<%= deployment_name %>.<%= tld %>:7077,1.spark-master.default.<%= deployment_name %>.<%= tld %>:7077"
+        driver:
+          memory: 2g
+        executor:
+          memory: 2g
       hadoop:
         namenode:
           dfs_name_dir_root: /var/vcap/store/hadoop
