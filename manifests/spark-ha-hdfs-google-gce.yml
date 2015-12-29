@@ -27,6 +27,7 @@ jobs:
         release: <%= release_name %>
 
     resource_pool: hdfs-master
+    persistent_disk_pool: master_disks
 
     networks:
       - name: default
@@ -39,6 +40,7 @@ jobs:
     properties:
       hadoop:
         namenode:
+          dfs_name_dir_root: /var/vcap/store/hadoop
           host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
           port: 8020
 
@@ -50,6 +52,7 @@ jobs:
         release: <%= release_name %>
 
     resource_pool: hdfs-master
+    persistent_disk_pool: master_disks
 
     networks:
       - name: default
@@ -62,6 +65,7 @@ jobs:
     properties:
       hadoop:
         namenode:
+          dfs_name_dir_root: /var/vcap/store/hadoop
           host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
           port: 8020
 
@@ -74,6 +78,7 @@ jobs:
         release: <%= release_name %>
 
     resource_pool: master
+    persistent_disk_pool: master_disks
 
     networks:
       - name: default
@@ -93,6 +98,7 @@ jobs:
         masters: "0.spark-master.default.<%= deployment_name %>.<%= tld %>:7077,1.spark-master.default.<%= deployment_name %>.<%= tld %>:7077"
       hadoop:
         namenode:
+          dfs_name_dir_root: /var/vcap/store/hadoop
           host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
           port: 8020
       nosql:
@@ -203,6 +209,13 @@ disk_pools:
     disk_size: 200_000
     cloud_properties:
       type: pd-standard
+
+disk_pools:
+  - name: master_disks
+    disk_size: 100_000
+    cloud_properties:
+      type: pd-standard
+
 
 update:
   canaries: 1
