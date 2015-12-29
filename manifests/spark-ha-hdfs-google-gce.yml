@@ -27,7 +27,7 @@ jobs:
         release: <%= release_name %>
 
     resource_pool: hdfs-master
-    persistent_disk_pool: master_disks
+    persistent_disk_pool: dfs_disks
 
     networks:
       - name: default
@@ -52,7 +52,7 @@ jobs:
         release: <%= release_name %>
 
     resource_pool: hdfs-master
-    persistent_disk_pool: master_disks
+    persistent_disk_pool: dfs_disks
 
     networks:
       - name: default
@@ -78,7 +78,7 @@ jobs:
         release: <%= release_name %>
 
     resource_pool: master
-    persistent_disk_pool: master_disks
+    persistent_disk_pool: dfs_disks
 
     networks:
       - name: default
@@ -117,7 +117,7 @@ jobs:
         release: <%= release_name %>
 
     resource_pool: slave
-    persistent_disk_pool: slave_disks
+    persistent_disk_pool: dfs_disks
 
     networks:
       - name: default
@@ -200,11 +200,7 @@ resource_pools:
       root_disk_type: pd-standard
 
 disk_pools:
-  - name: slave_disks
-    disk_size: 200_000
-    cloud_properties:
-      type: pd-standard
-  - name: master_disks
+  - name: dfs_disks
     disk_size: 200_000
     cloud_properties:
       type: pd-standard
