@@ -1,6 +1,6 @@
 <% num_zookeepers = 3 %>
 <% num_masters = 2 %>
-<% num_slaves = 5 %>
+<% num_slaves = 3 %>
 <% deployment_name = "spark-ha-hdfs-google-gce" %>
 <% zookeeper_deployment_name = "zookeeper-google-gce" %>
 <% tld = "microbosh" %>
@@ -41,7 +41,6 @@ jobs:
       hadoop:
         namenode:
           dfs_name_dir_root: /var/vcap/store/hadoop
-          hadoop_tmp_dir: /var/vcap/store/hadoop/tmp
           host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
           port: 8020
 
@@ -67,7 +66,6 @@ jobs:
       hadoop:
         namenode:
           dfs_name_dir_root: /var/vcap/store/hadoop
-          hadoop_tmp_dir: /var/vcap/store/hadoop/tmp
           host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
           port: 8020
 
