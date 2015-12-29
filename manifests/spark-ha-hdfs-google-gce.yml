@@ -209,13 +209,10 @@ disk_pools:
     disk_size: 200_000
     cloud_properties:
       type: pd-standard
-
-disk_pools:
   - name: master_disks
     disk_size: 100_000
     cloud_properties:
       type: pd-standard
-
 
 update:
   canaries: 1
