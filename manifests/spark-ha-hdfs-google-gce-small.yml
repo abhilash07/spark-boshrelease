@@ -1,7 +1,7 @@
 <% num_zookeepers = 3 %>
 <% num_masters = 2 %>
 <% num_slaves = 3 %>
-<% deployment_name = "spark-ha-hdfs-google-gce-s" %>
+<% deployment_name = "spark-ha-hdfs-google-gce" %>
 <% zookeeper_deployment_name = "zookeeper-google-gce" %>
 <% tld = "microbosh" %>
 <% release_name = "spark-boshrelease" %>
