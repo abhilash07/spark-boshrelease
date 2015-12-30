@@ -1,7 +1,7 @@
 <% num_zookeepers = 3 %>
 <% num_masters = 2 %>
 <% num_slaves = 3 %>
-<% deployment_name = "spark-ha-hdfs-google-gce" %>
+<% deployment_name = "spark-ha-hdfs-google-gce-s" %>
 <% zookeeper_deployment_name = "zookeeper-google-gce" %>
 <% tld = "microbosh" %>
 <% release_name = "spark-boshrelease" %>
@@ -19,62 +19,13 @@ name:  <%= deployment_name %>
 director_uuid: <%= director_uuid %>
 
 jobs:
-  - name: hdfs-master
+  - name: master-primary
     instances: 1
-
-    templates:
-      - name: namenode
-        release: <%= release_name %>
-
-    resource_pool: hdfs-master
-    persistent_disk_pool: dfs_disks
-
-    networks:
-      - name: default
-        type: dynamic
-        cloud_properties:
-          network_name: default
-          tags:
-            - hdfs-master
-
-    properties:
-      hadoop:
-        namenode:
-          dfs_name_dir_root: /var/vcap/store/hadoop
-          host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
-          port: 8020
-
-  - name: hdfs-smaster
-    instances: 1
-
-    templates:
-      - name: secondarynamenode
-        release: <%= release_name %>
-
-    resource_pool: hdfs-master
-    persistent_disk_pool: dfs_disks
-
-    networks:
-      - name: default
-        type: dynamic
-        cloud_properties:
-          network_name: default
-          tags:
-            - hdfs-master
-
-    properties:
-      hadoop:
-        namenode:
-          dfs_name_dir_root: /var/vcap/store/hadoop
-          host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
-          port: 8020
-
-
-  - name: spark-master
-    instances: <%= num_masters %>
 
     templates:
       - name: spark-master
+        release: <%= release_name %>
+      - name: namenode
         release: <%= release_name %>
 
     resource_pool: master
@@ -89,6 +40,12 @@ jobs:
             - spark-master
 
     properties:
+      hadoop:
+        namenode:
+          dfs_name_dir_root: /var/vcap/store/hadoop
+          hadoop_tmp_dir: /var/vcap/store/hadoop/tmp
+          host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
+          port: 8020
       zookeeper:
         servers:
           <% num_zookeepers.times do |i| %>
@@ -96,6 +53,10 @@ jobs:
           <% end %>
       spark:
         masters: "0.spark-master.default.<%= deployment_name %>.<%= tld %>:7077,1.spark-master.default.<%= deployment_name %>.<%= tld %>:7077"
+        driver:
+          memory: 2g
+        executor:
+          memory: 2g
       nosql:
         mongodb:
           host: 127.0.0.1
@@ -107,7 +68,56 @@ jobs:
           password: password
           db: db
 
-  - name: spark-slave
+  - name: master-secondary
+    instances: 1
+
+    templates:
+      - name: spark-master
+        release: <%= release_name %>
+      - name: secondarynamenode
+        release: <%= release_name %>
+
+    resource_pool: master
+    persistent_disk_pool: dfs_disks
+
+    networks:
+      - name: default
+        type: dynamic
+        cloud_properties:
+          network_name: default
+          tags:
+            - spark-master
+
+    properties:
+      hadoop:
+        namenode:
+          dfs_name_dir_root: /var/vcap/store/hadoop
+          hadoop_tmp_dir: /var/vcap/store/hadoop/tmp
+          host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
+          port: 8020
+      zookeeper:
+        servers:
+          <% num_zookeepers.times do |i| %>
+            <%= "- #{i}.zookeeper.default.#{zookeeper_deployment_name}.#{tld}\n" %>
+          <% end %>
+      spark:
+        masters: "0.spark-master.default.<%= deployment_name %>.<%= tld %>:7077,1.spark-master.default.<%= deployment_name %>.<%= tld %>:7077"
+        driver:
+          memory: 2g
+        executor:
+          memory: 2g
+      nosql:
+        mongodb:
+          host: 127.0.0.1
+          port: 27017
+        neo4j:
+          host: 127.0.0.1
+          port: 7474
+          user: user
+          password: password
+          db: db
+
+  - name: slave
     instances: <%= num_slaves %>
 
     templates:
@@ -130,6 +140,10 @@ jobs:
     properties:
       spark:
         masters: "0.spark-master.default.<%= deployment_name %>.<%= tld %>:7077,1.spark-master.default.<%= deployment_name %>.<%= tld %>:7077"
+        driver:
+          memory: 2g
+        executor:
+          memory: 2g
       hadoop:
         namenode:
           dfs_name_dir_root: /var/vcap/store/hadoop
@@ -167,17 +181,6 @@ releases:
 
 resource_pools:
   - name: master
-    network: default
-    stemcell:
-      name: bosh-google-kvm-ubuntu-trusty-go_agent
-      version: latest
-    cloud_properties:
-      zone: <%= zone %>
-      machine_type: n1-standard-1
-      root_disk_size_gb: 20
-      root_disk_type: pd-standard
-
-  - name: hdfs-master
     network: default
     stemcell:
       name: bosh-google-kvm-ubuntu-trusty-go_agent
