@@ -111,7 +111,7 @@ jobs:
           port: 7474
           user: user
           password: password
-          db: db
+          db: "/db/data"
 
   - name: spark-slave
     instances: <%= num_slaves %>
@@ -154,7 +154,7 @@ jobs:
           port: 7474
           user: user
           password: password
-          db: db
+          db: "/db/data"
 meta:
   environment: <%= deployment_name %>
   stemcell:
