@@ -43,6 +43,12 @@ properties:
   nosql.mongodb.port:
     description: "MongoDB cluster port"
     default: 27017
+  nosql.mongodb.db:
+    description: "MongoDB DB"
+    default: test
+  nosql.mongodb.collection:
+    description: "MongoDB Collection"
+    default: test  
   nosql.neo4j.host:
     description: "Neo4J DB host IP"
     default: 127.0.0.1

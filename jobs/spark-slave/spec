@@ -31,7 +31,7 @@ properties:
   spark.driver.memory:
     description: Driver memory
   spark.executor.memory:
-    description: Executor memory  
+    description: Executor memory
   zookeeper.servers:
     description: "List of all Apache Zookeeper server host IP/hostnames"
   zookeeper.client_port:
@@ -43,6 +43,12 @@ properties:
   nosql.mongodb.port:
     description: "MongoDB cluster port"
     default: 27017
+  nosql.mongodb.db:
+    description: "MongoDB DB"
+    default: test
+  nosql.mongodb.collection:
+    description: "MongoDB Collection"
+    default: test 
   nosql.neo4j.host:
     description: "Neo4J DB host IP"
     default: 127.0.0.1

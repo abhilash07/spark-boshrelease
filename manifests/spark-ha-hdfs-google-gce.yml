@@ -106,12 +106,14 @@ jobs:
         mongodb:
           host: 127.0.0.1
           port: 27017
+          db: test
+          collection: test
         neo4j:
           host: 127.0.0.1
           port: 7474
           user: user
           password: password
-          db: "/db/data"
+          db: "/db/data/"
 
   - name: spark-slave
     instances: <%= num_slaves %>
@@ -149,12 +151,14 @@ jobs:
         mongodb:
           host: 127.0.0.1
           port: 27017
+          db: test
+          collection: test
         neo4j:
           host: 127.0.0.1
           port: 7474
           user: user
           password: password
-          db: "/db/data"
+          db: "/db/data/"
 meta:
   environment: <%= deployment_name %>
   stemcell:

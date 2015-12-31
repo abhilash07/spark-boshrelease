@@ -31,6 +31,8 @@ export SPARK_JAVA_OPTS="-Xms300m -Xmx512m -XX:MaxPermSize=1g"
 #NoSQL - Spark write destinations
 export MONGO_IP=<%= p("nosql.mongodb.host") %>
 export MONGO_PORT=<%= p("nosql.mongodb.port") %>
+export MONGO_DB=<%= p("nosql.mongodb.db") %>
+export MONGO_COLLECTION=<%= p("nosql.mongodb.collection") %>
 export NEO_IP=<%= p("nosql.neo4j.host") %>
 export NEO_PORT=<%= p("nosql.neo4j.port") %>
 export NEO_USER=<%= p("nosql.neo4j.user") %>
