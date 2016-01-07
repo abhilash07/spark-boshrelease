@@ -1,0 +1,59 @@
+---
+packages:
+- name: hadoop
+  version: bd4c760675a08a67853b95daa3c916c6c3946596
+  fingerprint: bd4c760675a08a67853b95daa3c916c6c3946596
+  sha1: 88d5df82bb18b5dbfd9bccdc579eb0cd05d0e945
+  dependencies:
+  - java
+  - snappy
+- name: snappy
+  version: 408bb0a0039382236b6eff5544402e8869cc4eeb
+  fingerprint: 408bb0a0039382236b6eff5544402e8869cc4eeb
+  sha1: 716b319b7e29ac64e5a7323497561832edea7248
+  dependencies: []
+- name: bosh-helpers
+  version: 55717f488eb12fd47c95fd524ab1cd6304c7ce7e
+  fingerprint: 55717f488eb12fd47c95fd524ab1cd6304c7ce7e
+  sha1: 77423d9b8394460022bec28edc000aa3fae4b307
+  dependencies: []
+- name: java
+  version: 18f769c82d2f9a87037840059626b1ebd80daa7d
+  fingerprint: 18f769c82d2f9a87037840059626b1ebd80daa7d
+  sha1: 73f315da1943fec90ed4788781e68d8ecab7914b
+  dependencies: []
+- name: spark
+  version: ac8b6b707cb540fa214844852297d89aec881c31
+  fingerprint: ac8b6b707cb540fa214844852297d89aec881c31
+  sha1: ce494e86a3dceb7f4889fe263d445d6dde0041e3
+  dependencies:
+  - java
+jobs:
+- name: secondarynamenode
+  version: faf8fdbb3f9d3e96cf81b78b78f10aec66f5013f
+  fingerprint: faf8fdbb3f9d3e96cf81b78b78f10aec66f5013f
+  sha1: ad89f41d3e19fc26398edb42648a90e8cb76c289
+- name: datanode
+  version: bbd31c944562bc120c201298f463e7b9bf81da35
+  fingerprint: bbd31c944562bc120c201298f463e7b9bf81da35
+  sha1: 5c7ab7fc429300117c23e98fde1ee29f41c9731f
+- name: namenode
+  version: a3bbb8a4f474aeb3874249845d4c02b306780ae2
+  fingerprint: a3bbb8a4f474aeb3874249845d4c02b306780ae2
+  sha1: 50217c771809f576b591e28a706df59005aaf14f
+- name: spark-slave
+  version: 6819d8dfe8f26d1c1987eaf1dcea247afb6f9b30
+  fingerprint: 6819d8dfe8f26d1c1987eaf1dcea247afb6f9b30
+  sha1: c8bcec4735cfab5dc3c6023a630768b2218d8e17
+- name: spark-master
+  version: 5e5e99d547f21b2857e65181177139e3d77ff6f8
+  fingerprint: 5e5e99d547f21b2857e65181177139e3d77ff6f8
+  sha1: ff947f3f1d49f8e071fd33d3ce8b1cee2531ce63
+license:
+  version: a3e6d245553160dad1d273d363550134abc94578
+  fingerprint: a3e6d245553160dad1d273d363550134abc94578
+  sha1: 75e81ede746dc744f74c97b79c280f1b0073dca4
+commit_hash: d9545b65
+uncommitted_changes: true
+name: spark-boshrelease
+version: '7'

@@ -198,7 +198,7 @@ resource_pools:
       version: latest
     cloud_properties:
       zone: <%= zone %>
-      machine_type: n1-standard-1
+      machine_type: g1-small
       root_disk_size_gb: 20
       root_disk_type: pd-standard
 
