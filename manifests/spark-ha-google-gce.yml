@@ -87,6 +87,11 @@ jobs:
           memory: 2g
         executor:
           memory: 2g
+      hadoop:
+        namenode:
+          dfs_name_dir_root: /var/vcap/store/hadoop
+          host: "0.hdfs-master.default.<%= deployment_name %>.<%= tld %>"
+          port: 8020
       nosql:
         mongodb:
           host: 127.0.0.1
