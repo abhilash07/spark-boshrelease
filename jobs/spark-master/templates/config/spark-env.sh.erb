@@ -31,4 +31,5 @@ SPARK_MASTER_IP=<%= p("spark.master.host") %>
 SPARK_MASTER_PORT=<%= p("spark.master.port") %>
 SPARK_DAEMON_JAVA_OPTS="-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=<%= servers.join(',') %> -Dspark.deploy.zookeeper.dir=<%= p("spark.deploy.zookeeper.dir") %>"
 
-
+SPARK_WORKER_DIR=<%= p("spark.worker.dir") %>
+SPARK_LOCAL_DIRS=<%= p("spark.local.dirs") %>

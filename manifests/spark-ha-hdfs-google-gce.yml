@@ -102,6 +102,10 @@ jobs:
           memory: 2g
         executor:
           memory: 2g
+        worker:
+          dir: "CHANGE_ME"
+        local:
+          dirs: "CHANGE_ME"
       nosql:
         mongodb:
           host: 127.0.0.1
@@ -142,6 +146,10 @@ jobs:
           memory: 2g
         executor:
           memory: 2g
+        worker:
+          dir: "CHANGE_ME"
+        local:
+          dirs: "CHANGE_ME"          
       hadoop:
         namenode:
           dfs_name_dir_root: /var/vcap/store/hadoop
